@@ -54,7 +54,7 @@ app.post('/api/analyze-face', upload.single('image'), async (req, res) => {
   
       // Detect mask
       const maskResult = await hf.imageClassification({
-        model: 'Hemg/Face-Mask-Detecion',
+        model: 'Hemg/Face-Mask-Detection',
         //model: "Docty/nose-mask-classification",
         data: imageBuffer
       });
