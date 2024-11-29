@@ -11,7 +11,7 @@ const upload = multer({ dest: 'uploads/' });
 const hf = new HfInference(process.env.HF_TOKEN);
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://mood-e.vercel.app/'],
+  origin: ['*','http://localhost:3000', 'https://mood-e.vercel.app'],
   methods: ['GET', 'POST']
 }
 
