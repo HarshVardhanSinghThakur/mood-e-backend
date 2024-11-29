@@ -10,7 +10,11 @@ const app = express();
 const upload = multer({ dest: 'uploads/' });
 const hf = new HfInference(process.env.HF_TOKEN);
 
-app.use(cors());
+app.use(cors({origin: 'https://mood-e.vercel.app',  
+  methods: ['GET', 'POST']}
+  
+));
+
 
 // Analyze Face Route
 app.post('/api/analyze-face', upload.single('image'), async (req, res) => {
@@ -63,10 +67,10 @@ app.post('/api/analyze-face', upload.single('image'), async (req, res) => {
         return acc;
       }, {});
   
-      // Clean up uploaded file
+      
       fs.unlinkSync(req.file.path);
   
-      // Return structured response
+      
       res.json({
         emotions,
         gender,
